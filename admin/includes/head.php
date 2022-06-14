@@ -13,6 +13,13 @@
 	<link href="assets/css/minified/colors.min.css" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
+
+	<style>
+		.add-new {
+			color: #fff !important;
+		}
+	</style>
+
 	
 
 </head>
