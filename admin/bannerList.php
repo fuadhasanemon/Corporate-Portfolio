@@ -113,7 +113,7 @@
 										<td>22 Jun 1972</td>
 										<td><span class="label label-success">Active</span></td>
 										<td class="text-center">
-											<a href=""> <i class="icon-pencil7"></i> </a>
+											<a href="bannerUpdate.php"> <i class="icon-pencil7"></i> </a>
 											<a href=""> <i class="icon-trash"></i> </a>
 										</td>
 									</tr>
