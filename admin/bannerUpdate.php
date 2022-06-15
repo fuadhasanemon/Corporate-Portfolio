@@ -67,7 +67,7 @@
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
 							<li><a href=""><i class="icon-image-compare position-left"></i> Banner</a></li>
-							<li><a href="">Add</a></li>
+							<li><a href="">Update</a></li>
 						</ul>
 					</div>
 				</div>
@@ -80,7 +80,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Banner Add</h5>
+							<h5 class="panel-title">Banner Update</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 									<!-- <li><a data-action="collapse"></a></li>
@@ -92,7 +92,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="#">
+						<form class="form-horizontal" action="#">
 								<fieldset class="content-group mt-5">
 
 									<div class="form-group">
