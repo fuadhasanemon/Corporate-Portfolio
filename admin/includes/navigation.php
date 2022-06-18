@@ -3,8 +3,11 @@
 		<ul class="navigation navigation-main navigation-accordion">
 
 			<!-- Main -->
-			<li class="active"><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-			<li class=""><a href="bannerList.php"><i class="icon-image-compare"></i> <span>Banner</span></a></li>
+			<?php $menuName = basename(__DIR__);
+
+			?>
+			<li class=<?php echo $menuName == "admin" ? "active" : ''; ?>><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+			<li class=<?php echo $menuName == "banner" ? "active":''; ?>><a href="<?php echo $isInternal == true ? "": "banner/"; ?>bannerList.php"><i class="icon-image-compare"></i> <span>Banner</span></a></li>
 			<li class=""><a href="#"><i class="icon-home4"></i> <span>Services</span></a></li>
 			<li class=""><a href="#"><i class="icon-home4"></i> <span>Section</span></a></li>
 			<li class=""><a href="#"><i class="icon-home4"></i> <span>Our Projects</span></a></li>
