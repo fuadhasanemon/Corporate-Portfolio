@@ -13,13 +13,13 @@
 
 ?>
 
-<?php include 'includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 
 <body>
 
 	<!-- Main navbar -->
 
-	<?php include 'includes/mainNav.php'; ?>
+	<?php include '../includes/mainNav.php'; ?>
 
 	<!-- /main navbar -->
 
@@ -61,7 +61,7 @@
 
 					<!-- Main navigation -->
 
-					<?php include 'includes/navigation.php'; ?>
+					<?php include '../includes/navigation.php'; ?>
 
 					<!-- /main navigation -->
 
@@ -104,50 +104,54 @@
 
 						<div class="panel-body">
 
-						<form class="form-horizontal" action="#">
+							<form class="form-horizontal" action="../controller/bannerController.php" method="POST">
 								<fieldset class="content-group mt-5">
 
+									<?php
+										if(isset($_GET['msg'])){
+
+									?>
+
+									<div class="alert alert-success alert-bordered">
+										<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+										<span class="text-semibold">Well done!</span> <?php echo $_GET['msg']; ?>
+								    </div>
+
+									<?php } ?>
+
 									<div class="form-group">
-										<label class="control-label col-lg-2">Default text input</label>
+										<label class="control-label col-lg-2" for="title">Title</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="title" name="title">
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2">Password</label>
+										<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
 										<div class="col-lg-10">
-											<input type="password" class="form-control">
+											<input type="text" class="form-control" id="sub_title" name="sub_title">
 										</div>
 									</div>
-
-			                        <div class="form-group">
-			                        	<label class="control-label col-lg-2">Default select</label>
-			                        	<div class="col-lg-10">
-				                            <select name="select" class="form-control">
-				                                <option value="opt1">Usual select box</option>
-				                                <option value="opt2">Option 2</option>
-				                                <option value="opt3">Option 3</option>
-				                                <option value="opt4">Option 4</option>
-				                                <option value="opt5">Option 5</option>
-				                                <option value="opt6">Option 6</option>
-				                                <option value="opt7">Option 7</option>
-				                                <option value="opt8">Option 8</option>
-				                            </select>
-			                            </div>
-			                        </div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2">Textarea</label>
+										<label class="control-label col-lg-2" for="details">Details</label>
 										<div class="col-lg-10">
-											<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea"></textarea>
+											<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details"></textarea>
 										</div>
 									</div>
+
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="image">Image</label>
+										<div class="col-lg-10">
+											<input type="file" class="form-control" id="image" name="image">
+										</div>
+									</div>
+
 								</fieldset>
 
 								<div class="text-right">
 									<a type="submit" href="bannerList.php" class="btn btn-warning">Back to the list</a>
-									<button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+									<button type="submit" class="btn btn-primary" name="updateBanner">Submit <i class="icon-arrow-right14 position-right"></i></button>
 								</div>
 							</form>
 
@@ -176,7 +180,7 @@
 	</div>
 	<!-- /page container -->
 
-	<?php include 'includes/script.php'; ?>
+	<?php include '../includes/script.php'; ?>
 
 </body>
 

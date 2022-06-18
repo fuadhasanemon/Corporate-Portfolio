@@ -12,7 +12,7 @@
 	}
 
 	include '../includes/head.php';
-	include '../controller/dbConfig.php';
+	require '../controller/dbConfig.php';
 
 ?>
 
@@ -135,7 +135,7 @@
 										<td><?php echo ($banners['details']); ?></td>
 										<td><?php echo ($banners['image']); ?></td>
 										<td class="text-center">
-											<a href="bannerUpdate.php"> <i class="icon-pencil7"></i> </a>
+											<a href="bannerUpdate.php?bannerId=<?php echo ($banners['id']); ?>"> <i class="icon-pencil7"></i> </a>
 											<a href=""> <i class="icon-trash"></i> </a>
 										</td>
 									</tr>
