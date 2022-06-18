@@ -2,6 +2,18 @@
 <html lang="en">
 <html lang="en">
 
+<?php 
+
+	if(basename(__DIR__) != 'admin'){
+		$baseUrl = '../';
+		$isInternal = true;
+	} else {
+		$baseUrl = '';
+		$isInternal = false;
+	}
+
+?>
+
 <?php include 'includes/head.php'; ?>
 
 <body>
@@ -11,7 +23,6 @@
 	<?php include 'includes/mainNav.php' ?>
 
 	<!-- /main navbar -->
-
 
 	<!-- Page container -->
 	<div class="page-container">

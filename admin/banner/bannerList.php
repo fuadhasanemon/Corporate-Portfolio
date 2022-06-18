@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include 'includes/head.php'; ?>
+<?php 
+
+	if(basename(__DIR__) != 'admin'){
+		$baseUrl = '../';
+		$isInternal = true;
+	} else {
+		$baseUrl = '';
+		$isInternal = false;
+	}
+
+	include '../includes/head.php';
+	include '../controller/dbConfig.php';
+
+?>
+
 
 <body>
 
 	<!-- Main navbar -->
 
-	<?php include 'includes/mainNav.php'; ?>
+	<?php include '../includes/mainNav.php'; ?>
 
 	<!-- /main navbar -->
 
@@ -49,7 +63,7 @@
 
 					<!-- Main navigation -->
 					
-					<?php include 'includes/navigation.php' ; ?>
+					<?php include '../includes/navigation.php' ; ?>
 
 					<!-- /main navigation -->
 
@@ -92,15 +106,17 @@
 						</div>
 
 						<div class="panel-body">
+
+						
+
 							<table class="table table-bordered datatable-basic">
 								<thead>
 									<tr>
 										<th width="5%">SL</th>
-										<th width="20%">First Name</th>
-										<th width="20%">Last Name</th>
-										<th width="20%">Job Title</th>
-										<th width="20%">DOB</th>
-										<th width="5%">Status</th>
+										<th width="20%">Title</th>
+										<th width="20%">Sub Title</th>
+										<th width="25%">Details</th>
+										<th width="20%">Image</th>
 										<th width="10%" class="text-center">Actions</th>
 									</tr>
 								</thead>
@@ -111,7 +127,6 @@
 										<td><a href="#">Enright</a></td>
 										<td>Traffic Court Referee</td>
 										<td>22 Jun 1972</td>
-										<td><span class="label label-success">Active</span></td>
 										<td class="text-center">
 											<a href="bannerUpdate.php"> <i class="icon-pencil7"></i> </a>
 											<a href=""> <i class="icon-trash"></i> </a>
@@ -144,7 +159,7 @@
 	</div>
 	<!-- /page container -->
 
-	<?php include 'includes/script.php'; ?>
+	<?php include '../includes/script.php'; ?>
 
 </body>
 </html>

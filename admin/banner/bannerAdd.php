@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include 'includes/head.php'; ?>
+<?php 
+
+	if(basename(__DIR__) != 'admin'){
+		$baseUrl = '../';
+		$isInternal = true;
+	} else {
+		$baseUrl = '';
+		$isInternal = false;
+	}
+
+?>
+
+<?php include '../includes/head.php'; ?>
 
 <body>
 
 	<!-- Main navbar -->
 
-	<?php include 'includes/mainNav.php'; ?>
+	<?php include '../includes/mainNav.php'; ?>
 
 	<!-- /main navbar -->
 
@@ -49,7 +61,7 @@
 
 					<!-- Main navigation -->
 
-					<?php include 'includes/navigation.php'; ?>
+					<?php include '../includes/navigation.php'; ?>
 
 					<!-- /main navigation -->
 
@@ -67,7 +79,7 @@
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
 							<li><a href=""><i class="icon-image-compare position-left"></i> Banner</a></li>
-							<li><a href="">Update</a></li>
+							<li><a href="">Add</a></li>
 						</ul>
 					</div>
 				</div>
@@ -80,7 +92,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Banner Update</h5>
+							<h5 class="panel-title">Banner Add</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 									<!-- <li><a data-action="collapse"></a></li>
@@ -92,7 +104,7 @@
 
 						<div class="panel-body">
 
-						<form class="form-horizontal" action="#">
+							<form class="form-horizontal" action="#">
 								<fieldset class="content-group mt-5">
 
 									<div class="form-group">
@@ -164,7 +176,7 @@
 	</div>
 	<!-- /page container -->
 
-	<?php include 'includes/script.php'; ?>
+	<?php include '../includes/script.php'; ?>
 
 </body>
 
