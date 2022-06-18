@@ -107,6 +107,18 @@
 							<form class="form-horizontal" action="../controller/bannerController.php" method="POST">
 								<fieldset class="content-group mt-5">
 
+									<?php
+										if(isset($_GET['msg'])){
+
+									?>
+
+									<div class="alert alert-success alert-bordered">
+										<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+										<span class="text-semibold">Well done!</span> <?php echo $_GET['msg']; ?>
+								    </div>
+
+									<?php } ?>
+
 									<div class="form-group">
 										<label class="control-label col-lg-2" for="title">Title</label>
 										<div class="col-lg-10">
@@ -139,7 +151,7 @@
 
 								<div class="text-right">
 									<a type="submit" href="bannerList.php" class="btn btn-warning">Back to the list</a>
-									<button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+									<button type="submit" class="btn btn-primary" name="saveBanner">Submit <i class="icon-arrow-right14 position-right"></i></button>
 								</div>
 							</form>
 
