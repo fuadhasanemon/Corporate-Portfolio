@@ -121,17 +121,26 @@
 									</tr>
 								</thead>
 								<tbody>
+
+								<?php
+									$selctorQuery = 'SELECT * FROM banner';
+									$bannerList = mysqli_query($dbCon, $selctorQuery);
+
+									foreach ($bannerList as $key => $banners){
+								?>
 									<tr>
-										<td>1</td>
-										<td>Marth</td>
-										<td><a href="#">Enright</a></td>
-										<td>Traffic Court Referee</td>
-										<td>22 Jun 1972</td>
+										<td><?php echo ++$key ; ?></td>
+										<td><?php echo ($banners['title']); ?></td>
+										<td><a href="#"><?php echo ($banners['sub_title']); ?></a></td>
+										<td><?php echo ($banners['details']); ?></td>
+										<td><?php echo ($banners['image']); ?></td>
 										<td class="text-center">
 											<a href="bannerUpdate.php"> <i class="icon-pencil7"></i> </a>
 											<a href=""> <i class="icon-trash"></i> </a>
 										</td>
 									</tr>
+
+								<?php } ?>
 								</tbody>
 							</table>
 						</div>
