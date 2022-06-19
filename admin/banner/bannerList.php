@@ -107,7 +107,17 @@
 
 						<div class="panel-body">
 
-						
+							<?php
+								if(isset($_GET['msg'])){
+
+							?>
+
+							<div class="alert alert-success alert-bordered">
+								<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+								<span class="text-semibold">Well done!</span> <?php echo $_GET['msg']; ?>
+							</div>
+
+							<?php } ?>
 
 							<table class="table table-bordered datatable-basic">
 								<thead>
@@ -123,7 +133,7 @@
 								<tbody>
 
 								<?php
-									$selctorQuery = 'SELECT * FROM banner';
+									$selctorQuery = "SELECT * FROM banner WHERE active_status=1";
 									$bannerList = mysqli_query($dbCon, $selctorQuery);
 
 									foreach ($bannerList as $key => $banners){
@@ -135,8 +145,8 @@
 										<td><?php echo ($banners['details']); ?></td>
 										<td><?php echo ($banners['image']); ?></td>
 										<td class="text-center">
-											<a href="bannerUpdate.php?bannerId=<?php echo ($banners['id']); ?>"> <i class="icon-pencil7"></i> </a>
-											<a href=""> <i class="icon-trash"></i> </a>
+											<a href="bannerUpdate.php?banner_id=<?php echo ($banners['id']); ?>"> <i class="icon-pencil7"></i> </a>
+											<a href="bannerDelete.php?banner_id=<?php echo ($banners['id']); ?>"> <i class="icon-trash"></i> </a>
 										</td>
 									</tr>
 

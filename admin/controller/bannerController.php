@@ -15,7 +15,7 @@ if (isset($_POST['saveBanner'])) {
     
         $isInsrt = mysqli_query($dbCon, $insetQuery);
     
-        if ($isInsrt) {
+        if ($isInsrt == TRUE) {
             $message =  "Insertion succesfull";
         } else {
             $message = "Insertion failed";
@@ -36,16 +36,16 @@ if (isset($_POST['updateBanner'])) {
         echo "All fields required";
     } else {
 
-        $updateQuery = "UPDATE banner SET title='{$sub_title}', sub_title='{$sub_title}', details='{$details}' WHERE id='{$banner_id}'";
+        $updateQuery = "UPDATE banner SET title='{$title}', sub_title='{$sub_title}', details='{$details}' WHERE id='{$banner_id}'";
     
         $isInsrt = mysqli_query($dbCon, $updateQuery);
     
-        if ($isInsrt) {
+        if ($isInsrt == TRUE) {
             $message =  "Update succesfull";
         } else {
             $message = "Update failed";
         }
     
-        header("Location: ../banner/bannerUpdate.php?msg={$message}");
+        header("Location: ../banner/bannerUpdate.php?banner_id={$banner_id}&msg={$message}");
     }
 }
