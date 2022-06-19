@@ -104,6 +104,16 @@
 
 						<div class="panel-body">
 
+							
+							<?php
+								require '../controller/dbConfig.php';
+								$banner_id = $_GET['banner_id'];
+								$singleBannerQuery = "SELECT * FROM banner WHERE id='{$banner_id}'";
+								$getResults = mysqli_query($dbCon, $singleBannerQuery);
+
+							?>
+
+
 							<form class="form-horizontal" action="../controller/bannerController.php" method="POST">
 								<fieldset class="content-group mt-5">
 
@@ -119,33 +129,43 @@
 
 									<?php } ?>
 
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="title">Title</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="title" name="title">
-										</div>
-									</div>
+									<?php 
+										foreach($getResults as $key => $banner){
 
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="sub_title" name="sub_title">
-										</div>
-									</div>
+										
+									?>
+										
+										<input type="text" class="form-control" name="banner_id" value="<?php echo $banner['id']; ?>">
 
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="details">Details</label>
-										<div class="col-lg-10">
-											<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details"></textarea>
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="title">Title</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="title" name="title" value="<?php echo $banner['title']; ?>" required>
+											</div>
 										</div>
-									</div>
 
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="image">Image</label>
-										<div class="col-lg-10">
-											<input type="file" class="form-control" id="image" name="image">
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="sub_title" name="sub_title" value="<?php echo $banner['sub_title']; ?>" required>
+											</div>
 										</div>
-									</div>
+
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="details">Details</label>
+											<div class="col-lg-10">
+												<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details" required><?php echo $banner['details']; ?></textarea>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="image">Image</label>
+											<div class="col-lg-10">
+												<input type="file" class="form-control" id="image" name="image">
+											</div>
+										</div>
+
+									<?php } ?>
 
 								</fieldset>
 

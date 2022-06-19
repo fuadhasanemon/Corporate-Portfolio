@@ -27,6 +27,7 @@ if (isset($_POST['saveBanner'])) {
 
 // This is for update
 if (isset($_POST['updateBanner'])) {
+    $banner_id = $_POST['banner_id'];
     $title = $_POST['title'];
     $sub_title = $_POST['sub_title'];
     $details = $_POST['details'];
@@ -34,16 +35,17 @@ if (isset($_POST['updateBanner'])) {
     if (empty($title) || empty($sub_title) || empty($details)) {
         echo "All fields required";
     } else {
-        $insetQuery = "INSERT INTO banner (title, sub_title, details) values ('{$title}','{$sub_title}','{$details}')";
+
+        $updateQuery = "UPDATE banner SET title='{$sub_title}', sub_title='{$sub_title}', details='{$details}' WHERE id='{$banner_id}'";
     
-        $isInsrt = mysqli_query($dbCon, $insetQuery);
+        $isInsrt = mysqli_query($dbCon, $updateQuery);
     
         if ($isInsrt) {
-            $message =  "Insertion succesfull";
+            $message =  "Update succesfull";
         } else {
-            $message = "Insertion failed";
+            $message = "Update failed";
         }
     
-        header("Location: ../banner/bannerAdd.php?msg={$message}");
+        header("Location: ../banner/bannerUpdate.php?msg={$message}");
     }
 }
