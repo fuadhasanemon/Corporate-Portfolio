@@ -108,9 +108,8 @@
 							<?php
 								require '../controller/dbConfig.php';
 								$banner_id = $_GET['banner_id'];
-								$singleBannerQuery = "SELECT * FROM banner WHERE id='{$banner_id}'";
+								$singleBannerQuery = "SELECT * FROM banner WHERE id={$banner_id}";
 								$getResults = mysqli_query($dbCon, $singleBannerQuery);
-
 							?>
 
 
@@ -135,7 +134,7 @@
 										
 									?>
 										
-										<input type="text" class="form-control" name="banner_id" value="<?php echo $banner['id']; ?>">
+										<input type="hidden" class="form-control" name="banner_id" value="<?php echo $banner['id']; ?>">
 
 										<div class="form-group">
 											<label class="control-label col-lg-2" for="title">Title</label>
