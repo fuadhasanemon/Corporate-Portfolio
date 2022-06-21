@@ -4,6 +4,10 @@ require 'dbConfig.php';
 
 // This is for create
 if (isset($_POST['saveBanner'])) {
+    echo "<pre>";
+    print_r($_FILES['image']);
+    echo "</pre>";
+    die("die");
     $title = $_POST['title'];
     $sub_title = $_POST['sub_title'];
     $details = $_POST['details'];
