@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2022 at 03:01 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jun 22, 2022 at 08:47 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,9 +43,29 @@ CREATE TABLE `banner` (
 INSERT INTO `banner` (`id`, `title`, `sub_title`, `details`, `image`, `active_status`) VALUES
 (1, 'Lorem ipsum is a placeholder text commonly used to demonstrate the', 'Lorem ipsum is a placeholder text commonly used to demonstrate the', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'image1.jpeg', 0),
 (2, 'ki obostha vhai', 'ki obostha', 'vala aso ni fuad', 'emon.pmg', 1),
-(3, 'SVSL nkl  ', 'Dvklnvln S', 'VkSDN kSN> ', '', 1),
+(3, 'SVSL nkl  ', 'Dvklnvln S', 'VkSDN kSN> ', '', 0),
 (4, 'vjsbs', 'VJbKJVBe', 'JVBKJj', '', 1),
 (5, 'Fuad hasas', 'Hasan ', 'Emon', '1655901928.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(150) NOT NULL,
+  `active_status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=inActive,1=active'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `active_status`) VALUES
+(1, 'web design', 1),
+(2, 'web development', 1);
 
 --
 -- Indexes for dumped tables
@@ -58,6 +78,12 @@ ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -66,6 +92,12 @@ ALTER TABLE `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
