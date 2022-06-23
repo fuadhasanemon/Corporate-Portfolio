@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2022 at 08:47 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jun 23, 2022 at 03:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,6 +67,31 @@ INSERT INTO `categories` (`id`, `category_name`, `active_status`) VALUES
 (1, 'web design', 1),
 (2, 'web development', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `our_projects`
+--
+
+CREATE TABLE `our_projects` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `project_name` varchar(255) NOT NULL,
+  `project_link` varchar(255) NOT NULL,
+  `project_thumb` varchar(255) NOT NULL,
+  `active_status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0= inActive, 1=active	'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `our_projects`
+--
+
+INSERT INTO `our_projects` (`id`, `category_id`, `project_name`, `project_link`, `project_thumb`, `active_status`) VALUES
+(1, 1, 'lms', '0', '1655987391.png', 1),
+(2, 2, 'mms', '0', '1655987536.png', 1),
+(3, 1, 'SBDSB', '0', '1655987744.jpg', 1),
+(4, 2, 'nabir foundation', 'http://localhost/lfwf_assignment/project/admin/ourProjects/projectAdd.php', '1655988000.png', 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -84,6 +109,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `our_projects`
+--
+ALTER TABLE `our_projects`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -98,6 +129,12 @@ ALTER TABLE `banner`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `our_projects`
+--
+ALTER TABLE `our_projects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

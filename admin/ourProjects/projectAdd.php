@@ -78,7 +78,7 @@
 
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href=""><i class="icon-image-compare position-left"></i> Banner</a></li>
+							<li><a href=""><i class="icon-image-compare position-left"></i> Project</a></li>
 							<li><a href="">Add</a></li>
 						</ul>
 					</div>
@@ -92,7 +92,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Banner Add</h5>
+							<h5 class="panel-title">Project Add</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 									<!-- <li><a data-action="collapse"></a></li>
@@ -104,7 +104,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="../controller/bannerController.php" method="POST" enctype="multipart/form-data"">
+							<form class="form-horizontal" action="../controller/projectController.php" method="POST" enctype="multipart/form-data"">
 								<fieldset class="content-group mt-5">
 
 									<?php
@@ -119,39 +119,58 @@
 
 									<?php } ?>
 
+									<?php 
+										require '../controller/dbConfig.php';
+										$dropdownSelctorQuery = "SELECT * FROM categories WHERE active_status=1";
+										$categoryList = mysqli_query($dbCon, $dropdownSelctorQuery);
+
+									?>
+
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="title">Title</label>
+										<label class="control-label col-lg-2" for="category_id">Project Categoris</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="title" name="title">
+											<select name="category_id" class="form-control" id="category_id">
+				                                <option value="">Select Category</option>
+												
+												<?php 
+													if(!empty($categoryList)){
+														foreach($categoryList as $category){ 
+													
+												?>
+
+				                                	<option value="<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></option>
+
+												<?php }}; ?>
+				                            </select>
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
+										<label class="control-label col-lg-2" for="project_name">Project Name</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="sub_title" name="sub_title">
+											<input type="text" class="form-control" id="project_name" name="project_name">
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="details">Details</label>
+										<label class="control-label col-lg-2" for="project_link">Project Link</label>
 										<div class="col-lg-10">
-											<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details"></textarea>
+											<input type="text" class="form-control" id="project_link" name="project_link">
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="image">Image</label>
+										<label class="control-label col-lg-2" for="project_thumb">Project Thumb</label>
 										<div class="col-lg-10">
-											<input type="file" class="form-control" id="image" name="image">
+											<input type="file" class="form-control" id="project_thumb" name="project_thumb">
 										</div>
 									</div>
 
 								</fieldset>
 
 								<div class="text-right">
-									<a type="submit" href="bannerList.php" class="btn btn-warning">Back to the list</a>
-									<button type="submit" class="btn btn-primary" name="saveBanner">Submit <i class="icon-arrow-right14 position-right"></i></button>
+									<a type="submit" href="projectList.php" class="btn btn-warning">Back to the list</a>
+									<button type="submit" class="btn btn-primary" name="saveProject">Submit <i class="icon-arrow-right14 position-right"></i></button>
 								</div>
 							</form>
 
