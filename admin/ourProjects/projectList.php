@@ -123,26 +123,32 @@
 								<thead>
 									<tr>
 										<th width="5%">SL</th>
+										<th width="20%">Category Name</th>
 										<th width="20%">Project Name</th>
-										<th width="30%">Project Link</th>
-										<th width="30%">Project Thumb</th>
+										<th width="20%">Project Link</th>
+										<th width="20%">Project Thumb</th>
 										<th width="15%" class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
 
 								<?php
-									$selctorQuery = "SELECT * FROM project WHERE active_status=1";
+									$selctorQuery = "SELECT our_projects.*, categories.category_name FROM `our_projects` 
+									INNER JOIN categories ON our_projects.category_id = categories.id
+									WHERE our_projects.active_status = 1";
 									$projectList = mysqli_query($dbCon, $selctorQuery);
+
+									if(!empty($projectList) > 0){
 
 									foreach ($projectList as $key => $project){
 								?>
 									<tr>
 										<td><?php echo ++$key ; ?></td>
+										<td><?php echo ($project['category_name']); ?></td>
 										<td><?php echo ($project['project_name']); ?></td>
 										<td><?php echo ($project['project_link']); ?></td>
 										<td>
-											<img class="" width="80" height="80" src="<?php echo '../uploads/projectImage/'.$project['project_thumb']; ?>" alt="">
+											<img class="" width="80" height="80" src="<?php echo '../uploads/projectImage/'.$project['project_thumb']; ?>" alt="Not Found">
 										</td>
 										<td class="text-center">
 											<a href="projectUpdate.php?project_id=<?php echo ($project['id']); ?>"> <i class="icon-pencil7"></i> </a>
@@ -150,7 +156,11 @@
 										</td>
 									</tr>
 
-								<?php } ?>
+								<?php 
+								}
+							} 
+								
+								?>
 								</tbody>
 							</table>
 						</div>
