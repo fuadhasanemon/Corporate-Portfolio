@@ -104,7 +104,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="../controller/bannerController.php" method="POST" enctype="multipart/form-data"">
+							<form class="form-horizontal" action="../controller/bannerController.php" method="POST" enctype="multipart/form-data">
 								<fieldset class="content-group mt-5">
 
 									<?php
