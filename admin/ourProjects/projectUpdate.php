@@ -78,7 +78,7 @@
 
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href=""><i class="icon-image-compare position-left"></i> Banner</a></li>
+							<li><a href=""><i class="icon-image-compare position-left"></i> project</a></li>
 							<li><a href="">Update</a></li>
 						</ul>
 					</div>
@@ -92,7 +92,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Banner Update</h5>
+							<h5 class="panel-title">project Update</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 									<!-- <li><a data-action="collapse"></a></li>
@@ -107,13 +107,14 @@
 							
 							<?php
 								require '../controller/dbConfig.php';
-								$banner_id = $_GET['banner_id'];
-								$singleBannerQuery = "SELECT * FROM banner WHERE id={$banner_id}";
-								$getResults = mysqli_query($dbCon, $singleBannerQuery);
+								$project_id = $_GET['project_id'];
+								// die($project_id);
+								$singleCategoryQuery = "SELECT * FROM our_projects WHERE id={$project_id}";
+								$getResults = mysqli_query($dbCon, $singleCategoryQuery);
 							?>
 
 
-							<form class="form-horizontal" action="../controller/bannerController.php" method="POST">
+							<form class="form-horizontal" action="../controller/projectController.php" method="POST">
 								<fieldset class="content-group mt-5">
 
 									<?php
@@ -129,38 +130,38 @@
 									<?php } ?>
 
 									<?php 
-										foreach($getResults as $key => $banner){
+										foreach($getResults as $key => $project){
 
 										
 									?>
 										
-										<input type="hidden" class="form-control" name="banner_id" value="<?php echo $banner['id']; ?>">
+										<input type="hidden" class="form-control" name="project_id" value="<?php echo $project['id']; ?>">
 
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="title">Title</label>
+											<label class="control-label col-lg-2" for="project_name">Title</label>
 											<div class="col-lg-10">
-												<input type="text" class="form-control" id="title" name="title" value="<?php echo $banner['title']; ?>" required>
+												<input type="text" class="form-control" id="project_name" name="project_name" value="<?php echo $project['project_name']; ?>" required>
 											</div>
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
+											<label class="control-label col-lg-2" for="project_link">Sub Title</label>
 											<div class="col-lg-10">
-												<input type="text" class="form-control" id="sub_title" name="sub_title" value="<?php echo $banner['sub_title']; ?>" required>
+												<input type="text" class="form-control" id="project_link" name="project_link" value="<?php echo $project['project_link']; ?>" required>
 											</div>
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="details">Details</label>
+											<label class="control-label col-lg-2" for="project_link">Sub Title</label>
 											<div class="col-lg-10">
-												<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details" required><?php echo $banner['details']; ?></textarea>
+												<input type="text" class="form-control" id="project_link" name="project_link" value="<?php echo $project['project_link']; ?>" required>
 											</div>
 										</div>
 
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="image">Image</label>
+											<label class="control-label col-lg-2" for="project_thumb">Image</label>
 											<div class="col-lg-10">
-												<input type="file" class="form-control" id="image" name="image">
+												<input type="file" class="form-control" id="project_thumb" name="project_thumb">
 											</div>
 										</div>
 
@@ -169,8 +170,8 @@
 								</fieldset>
 
 								<div class="text-right">
-									<a type="submit" href="bannerList.php" class="btn btn-warning">Back to the list</a>
-									<button type="submit" class="btn btn-primary" name="updateBanner">Submit <i class="icon-arrow-right14 position-right"></i></button>
+									<a type="submit" href="projectList.php" class="btn btn-warning">Back to the list</a>
+									<button type="submit" class="btn btn-primary" name="updateProject">Submit <i class="icon-arrow-right14 position-right"></i></button>
 								</div>
 							</form>
 

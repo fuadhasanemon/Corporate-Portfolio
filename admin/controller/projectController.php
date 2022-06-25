@@ -15,11 +15,11 @@ if (isset($_POST['saveProject'])) {
         $file_type = $main_image_array['type'];
         $file_tmp_name = $main_image_array['tmp_name'];
 
-        if(move_uploaded_file($file_tmp_name, '../uploads/projectImage/'.$file_name)){
-            echo "Image uploaded successfully";
-        } else {
-            echo "Image upload failed";
-        }
+        // if(move_uploaded_file($file_tmp_name, '../uploads/projectImage/'.$file_name)){
+        //     echo "Image uploaded successfully";
+        // } else {
+        //     echo "Image upload failed";
+        // }
 
         $nameExtArr = explode('.', $file_name);
         $file_extension = strtolower(end($nameExtArr));
@@ -27,8 +27,9 @@ if (isset($_POST['saveProject'])) {
 
         $random_file_name = time() . '.' . $file_extension;
 
+
         if (in_array($file_extension, $valid_extensions)) {
-            move_uploaded_file($file_tmp_name, '../uploads/bannerImage/' . $random_file_name);
+            move_uploaded_file($file_tmp_name, '../uploads/projectImage/' . $random_file_name);
             // $message = "Image uploaded successfully";
             $upload_status = true;
         } else {
@@ -56,22 +57,22 @@ if (isset($_POST['saveProject'])) {
             $message = "Insertion failed";
         }
 
-        header("Location: ../ourProjects/projectAdd.php?msg={$message}");
+        header("Location: ../ourProjects/projectList.php?msg={$message}");
     }
 }
 
 // This is for update
-if (isset($_POST['updateBanner'])) {
-    $banner_id = $_POST['banner_id'];
-    $title = $_POST['title'];
-    $sub_title = $_POST['sub_title'];
-    $details = $_POST['details'];
+if (isset($_POST['updateProject'])) {
+    $project_id = $_POST['project_id'];
+    $project_name = $_POST['project_name'];
+    $project_link = $_POST['project_link'];
+    $project_thumb = $_POST['project_thumb'];
 
-    if (empty($title) || empty($sub_title) || empty($details)) {
+    if (empty($project_name) || empty($project_link)) {
         echo "All fields required";
     } else {
 
-        $updateQuery = "UPDATE banner SET title='{$title}', sub_title='{$sub_title}', details='{$details}' WHERE id='{$banner_id}'";
+        $updateQuery = "UPDATE our_projects SET project_name='{$project_name}', project_link='{$project_link}', project_thumb='{$project_thumb}' WHERE id='{$project_id}'";
 
         $isInsrt = mysqli_query($dbCon, $updateQuery);
 
@@ -81,6 +82,6 @@ if (isset($_POST['updateBanner'])) {
             $message = "Update failed";
         }
 
-        header("Location: ../banner/bannerUpdate.php?banner_id={$banner_id}&msg={$message}");
+        header("Location: ../ourProjects/projectList.php?project_id={$project_id}&msg={$message}");
     }
 }
