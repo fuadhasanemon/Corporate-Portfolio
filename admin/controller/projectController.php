@@ -66,13 +66,38 @@ if (isset($_POST['updateProject'])) {
     $project_id = $_POST['project_id'];
     $project_name = $_POST['project_name'];
     $project_link = $_POST['project_link'];
-    $project_thumb = $_POST['project_thumb'];
+    // $project_thumb = $_POST['project_thumb'];
+
+    if (isset($_FILES['project_thumb'])) {
+        
+        $main_image_array = $_FILES['project_thumb'];
+        die($main_image_array);
+
+        $nameExtArr = explode('.', $file_name);
+        $file_extension = strtolower(end($nameExtArr));
+        $valid_extensions = array('jpg', 'png', 'jpeg', 'svg');
+
+        $random_file_name = time() . '.' . $file_extension;
+
+
+        if (in_array($file_extension, $valid_extensions)) {
+            move_uploaded_file($file_tmp_name, '../uploads/projectImage/' . $random_file_name);
+            // $message = "Image uploaded successfully";
+            $upload_status = true;
+        } else {
+            $message = $file_extension . " is not Supported";
+        }
+    } else {
+        $message = 'image not found';
+    }
+
+
 
     if (empty($project_name) || empty($project_link)) {
         echo "All fields required";
     } else {
 
-        $updateQuery = "UPDATE our_projects SET project_name='{$project_name}', project_link='{$project_link}', project_thumb='{$project_thumb}' WHERE id='{$project_id}'";
+        $updateQuery = "UPDATE our_projects SET project_name='{$project_name}', project_link='{$project_link}', project_thumb='{$random_file_name}' WHERE id='{$project_id}'";
 
         $isInsrt = mysqli_query($dbCon, $updateQuery);
 
