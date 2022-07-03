@@ -75,10 +75,32 @@ if (isset($_POST['saveBanner'])) {
      * 2. we have to overcome the random_file_name error in line no 123
      * 3. when users dont upload any new image then we replace the variable random_file_name value by previous old image name
      */
-    
+
 
 // This is for update
 if (isset($_POST['updateBanner'])) {
+
+
+    // For get the image name
+    $banner_id = $_GET['banner_id'];
+	$singleBannerQuery = "SELECT * FROM banner WHERE id={$banner_id}";
+	$getResults = mysqli_query($dbCon, $singleBannerQuery);
+
+
+
+    $oldImg = '';
+    foreach ($getResult as $key => $banner) {
+        $oldImg = $banner['image'];
+    }
+    // End of get the image name
+
+
+
+
+
+
+
+
 
     $upload_status = false;
     if (isset($_FILES['image'])) {
