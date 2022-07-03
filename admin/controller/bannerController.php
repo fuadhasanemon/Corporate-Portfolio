@@ -61,6 +61,22 @@ if (isset($_POST['saveBanner'])) {
     }
 }
 
+
+   // step
+    /**
+     * 1. we need edit rows id
+     * 2. get old image name by id
+     * 3. generate new image name
+     * 4. check both image name equal or not equal -> if not equal then delete previous image and upload new image
+     */
+
+    /**
+     * 1. we have already uploaded image -> we dont need to validation for image
+     * 2. we have to overcome the random_file_name error in line no 123
+     * 3. when users dont upload any new image then we replace the variable random_file_name value by previous old image name
+     */
+    
+
 // This is for update
 if (isset($_POST['updateBanner'])) {
 
